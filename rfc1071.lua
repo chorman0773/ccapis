@@ -22,7 +22,7 @@ function rfc1071.checksum(message)
     local val = int2bin.tohword(message:sub(2*messageLen+1,2*(messageLen+1)));
     sum = add(sum,val);
   end
-  return int2bin.hword(sum);
+  return int2bin.hword(bit32.bxor(0xFFFF,sum));
 end
 
 
